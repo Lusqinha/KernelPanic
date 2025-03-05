@@ -12,13 +12,6 @@ class User < ApplicationRecord
 
   before_save :attach_avatar_from_github
 
-  def update_avatar_from_github
-    attach_avatar_from_github
-    save
-  end
-
-  private
-
   def attach_avatar_from_github
     return unless github_username.present?
 
