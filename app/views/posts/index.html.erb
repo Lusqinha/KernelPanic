@@ -1,0 +1,28 @@
+<% content_for :title, "Posts" %>
+
+<div class="w-full py-24">
+  <% if notice.present? %>
+    <p class="mx-auto py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div id="posts" class="min-w-full mx-auto">
+    <% if @posts.any? %>
+      <% @posts.each do |post| %>
+        <div class="w-fit flex flex-col mx-auto text-2xl">
+          <div class="flex gap-1 items-center">
+            <span class="text-nowrap" >📁 ~ </span>
+            <%= link_to truncate(post.title, length: 50), post_path(post), class: "text-4xl font-bold hover:font-bolder" %>
+          </div>
+          <div class="ml-13 flex gap-1 max-w-fit">
+            <span class="text-[#ffff]/60 text-xs"><%= post.user.name %>,</span>
+            <span class="text-[#ffff]/60 text-xs"><%= time_ago_in_words(post.created_at) %> atrás</span>
+          </div>
+          
+        </div>
+                   
+      <% end %>
+    <% else %>
+      <p class="text-center my-10">Nenhum post no momento.</p>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<h1><%= @user.name %></h1>
+
+<% if @user.avatar.attached? %>
+  <%= image_tag @user.avatar %>
+<% else %>
+  <p>No avatar available</p>
+<% end %>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>KernelPanic | <%= content_for(:title) || "Posts" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="description" content="KernelPanic é um blog semanal sobre tecnologia, programação e desenvolvimento de software, vida e reflexões.">
+    <meta name="keywords" content="tecnologia, programação, desenvolvimento de software, vida, reflexões, blog">
+    <meta name="author" content="Lucas Borges">
+    <meta name="distribution" content="Rio Grande do Sul, Brazil">
+
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <header>
+      <nav class="bg-[#14161a] text-white p-5">
+        <div class="container mx-auto flex justify-center items-center">
+          <div class="flex flex-col items-center">
+            <a href="/" class="font-bold text-2xl">
+              <%= image_tag 'logo_branca.svg', class: 'h-10 md:h-12 glow' %>
+            </a>
+            <span class="font-extrabold text-xs flex items-center mt-1 justify-center">KernelPanic</span>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="container mx-auto px-5 flex items-center justify-center">
+    
+      <%= yield %>
+
+      <% if authenticated? %>
+      <div class="fixed bottom-5 right-5">
+        <div class="flex items-center justify-center">
+
+          <script>
+            function alterMenu(){
+              const menu = document.querySelector('#admin-menu')
+              if(menu.classList.contains('hidden')){
+                menu.classList.remove('hidden')
+              } else {
+                menu.classList.add('hidden')
+              }
+            }
+          </script>
+
+          <button class="bg-[#FFFF] text-black p-3 rounded-full shadow-lg" onclick="alterMenu()">
+            <span class="flex justify-center items-center font-bold" ><%= image_tag 'logo.svg', class: 'h-8 w-8' %></span>
+          </button>
+          <ul id="admin-menu" class="hidden absolute w-[150px] right-0 bottom-14 bg-white shadow-lg rounded-lg flex flex-col gap-2 p-2 ">
+            <li class="text-white bg-[#2d2d2d] p-2 rounded-lg w-full">
+              <%= link_to 'Novo Post', new_post_path, class: "font-bold text-sm cursor-pointer w-full" %>
+            </li>
+            <li class="text-white bg-[#2d2d2d] p-2 rounded-lg w-full">
+              <%= button_to 'Sair', session_path, method: :delete, data: { turbo_method: :delete }, class: "font-bold cursor-pointer text-sm w-full text-left" %>
+            </li>
+          </ul>
+          
+
+        </div>
+      </div>
+
+      <% end %>
+    </main>
+  </body>
+</html>

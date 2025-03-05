@@ -1,0 +1,10 @@
+<% content_for :title, "Editando post" %>
+
+<div class="md:w-2/3 w-full mx-auto mt-5 p-10">
+  <h1 class="font-bold text-4xl">Editando post</h1>
+
+  <%= render "form", post: @post %>
+
+  <%= link_to "Mostrar o post", @post, class: "mt-5 ml-2 rounded-md px-3.5 py-2.5 bg-stone-800 hover:bg-stone-700 inline-block font-medium" %>
+  <%= link_to "Voltar", posts_path, class: "mt-5 ml-2 rounded-md px-3.5 py-2.5 bg-stone-800 hover:bg-stone-700 inline-block font-medium" %>
+</div>
