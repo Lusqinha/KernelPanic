@@ -2,7 +2,7 @@
   <div class="flex md:mx-10 flex-col border-b-2 border-[#2d2d2d] md:flex-row">    
     <div class="flex gap-3 mb-5">
       <% if post.user.avatar.attached? %>
-        <%= image_tag post.user.avatar, class: "rounded-full w-20" %>
+        <%= image_tag post.user.avatar, class: "rounded-full w-16 sm:w-20" %>
       <% end %>
       <div class="flex flex-col justify-center ">
         <span class="font-bold text-xl"><%= post.user.name %></span>
