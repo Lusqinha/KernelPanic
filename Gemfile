@@ -21,6 +21,7 @@ gem "tailwindcss-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+gem 'friendly_id', '~> 5.4'
 
 gem "rails-i18n", "~> 8.0.0"
 
