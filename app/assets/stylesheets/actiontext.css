@@ -10,6 +10,12 @@ trix-editor {
   min-height: 5em;
   outline: none; }
 
+.trix-content img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; 
+  padding: 1rem }
+
 trix-toolbar * {
   box-sizing: border-box; }
 
@@ -371,7 +377,7 @@ trix-editor .attachment__metadata {
     font-size: 0.9em;
     padding: 0.5em;
     white-space: pre;
-    background-color: #eee;
+    background-color: #1d1d1d;
     overflow-x: auto; }
   .trix-content img {
     max-width: 100%;
