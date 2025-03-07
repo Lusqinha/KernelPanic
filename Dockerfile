@@ -41,6 +41,8 @@ RUN bundle install && \
 # Copy application code
 COPY . .
 
+RUN echo $RAILS_MASTER_KEY > ./config/master.key
+
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
