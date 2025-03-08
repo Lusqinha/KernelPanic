@@ -5,19 +5,20 @@
     <p class="mx-auto py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div id="posts" class="min-w-full mx-auto">
+  <div id="posts" class="max-w-fit mx-auto">
     <% if @posts.any? %>
       <% @posts.each do |post| %>
-        <div class="md:w-2/3 flex flex-col mx-auto text-2xl mb-10">
-          <div class="flex gap-3 items-center justify-start">
-            <span class="text-purple-500 text-5xl font-extrabold italic">!</span>
-            <%= link_to truncate(post.title, length: 50), post_path(post), class: "text-2xl md:text-4xl font-bold hover:font-bolder" %>
+        <div class="w-full flex mx-auto text-2xl mb-10 border-l-8 border-[#4a0bae96]">
+          <div class="ml-5 flex flex-col items-start justify-center gap-1 w-full">
+            <%= link_to truncate(post.title, length: 50), post_path(post), class: "text-2xl md:text-4xl font-bold hover:font-bolder w-full" %>
+            <div class="flex items-center h-5 gap-0.5"> 
+              <% if post.user.avatar.attached? %>
+                <%= image_tag post.user.avatar, class: "rounded-full w-4 sm:w-4" %>
+              <% end %>
+              <span class="text-[#ffff]/60 text-xs"><%= post.user.name %>,</span>
+              <span class="text-[#ffff]/60 text-xs"><%= time_ago_in_words(post.created_at) %> atrás</span>
+            </div>
           </div>
-          <div class="ml-13 flex gap-1 max-w-fit">
-            <span class="text-[#ffff]/60 text-xs"><%= post.user.name %>,</span>
-            <span class="text-[#ffff]/60 text-xs"><%= time_ago_in_words(post.created_at) %> atrás</span>
-          </div>
-          
         </div>
                    
       <% end %>

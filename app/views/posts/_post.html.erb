@@ -10,8 +10,8 @@
       </div>
     </div> 
   </div>
-  <div class="md:px-10 bg-[#14161a] text-lg sm:text-xl text-justify border-b-2 pb-5 border-[#2d2d2d]">
-    <h2 class="font-extrabold text-left md:text-left text-2xl md:text-4xl pb-5 mb-5 border-b border-gray-500 "><%= link_to post.title, post_path(post) %></h2>
+  <div class="md:px-10 bg-[#14161a] text-lg sm:text-xl border-b-2 pb-5 border-[#2d2d2d]">
+    <h2 class="font-extrabold text-left md:text-left text-3xl md:text-4xl py-2 mb-5 pl-3 border-l-8 border-[#2d2d2d] "><%= link_to post.title, post_path(post) %></h2>
     <%= @post.content %>
   </div>
   <% if @post.spotify_track_url? %>
