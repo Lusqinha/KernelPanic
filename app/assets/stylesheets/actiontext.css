@@ -2,6 +2,10 @@
  * Default Trix editor styles. See Action Text overwrites below.
 */
 
+strong {
+  text-shadow: 0 0 3px #ffffff47, 0 0 5px #ffffff47;
+}
+
 trix-editor {
   border: 1px solid #bbb;
   border-radius: 3px;
