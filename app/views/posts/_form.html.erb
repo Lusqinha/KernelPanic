@@ -21,6 +21,10 @@
     <%= form.text_field :spotify_track_url, class: "rounded-md px-3.5 py-2.5 w-full border border-gray-200" %>
   </div>
 
+  <div class="mt-5 flex gap-1">
+    <%= form.check_box :draft %> <%= form.label :draft, "Rascunho", class: "block font-medium " %>
+  </div>
+
   <div class="mt-5">
     <%= form.label :content, "Conteúdo", class: "block font-medium" %>
     <%= form.rich_text_area :content, class: "rounded-md px-3.5 py-2.5 w-full border border-gray-200" %>
