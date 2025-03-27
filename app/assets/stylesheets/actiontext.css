@@ -2,6 +2,10 @@
  * Default Trix editor styles. See Action Text overwrites below.
 */
 
+strong {
+  text-shadow: 0 0 3px #ffffff47, 0 0 5px #ffffff47;
+}
+
 trix-editor {
   border: 1px solid #bbb;
   border-radius: 3px;
@@ -9,6 +13,12 @@ trix-editor {
   padding: 0.4em 0.6em;
   min-height: 5em;
   outline: none; }
+
+.trix-content img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; 
+  padding: 1rem }
 
 trix-toolbar * {
   box-sizing: border-box; }
@@ -349,7 +359,7 @@ trix-editor .attachment__metadata {
     font-size: 1.2em;
     line-height: 1.2; }
   .trix-content blockquote {
-    border: 0 solid #ccc;
+    border: 0 solid #2d2d2d;
     border-left-width: 0.3em;
     margin-left: 0.3em;
     padding-left: 0.6em; }
@@ -371,7 +381,7 @@ trix-editor .attachment__metadata {
     font-size: 0.9em;
     padding: 0.5em;
     white-space: pre;
-    background-color: #eee;
+    background-color: #1d1d1d;
     overflow-x: auto; }
   .trix-content img {
     max-width: 100%;

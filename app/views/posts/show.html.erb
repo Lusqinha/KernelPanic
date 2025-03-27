@@ -6,7 +6,7 @@
   <% end %>
 
   <div class="flex justify-between items-center flex-row-reverse">
-    <% if authenticated? %>
+    <% if authenticated? && Current.user == @post.user %>
       <%= link_to "Editar", edit_post_path(@post), class: "mt-2 rounded-md px-3.5 py-2.5 bg-stone-800 hover:bg-stone-700 inline-block font-bold" %>
       <div class="inline-block ml-2">
         <%= button_to "Apagar", @post, method: :delete, class: "mt-2 rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-bold cursor-pointer", data: { turbo_confirm: "Tem certeza?" } %>
