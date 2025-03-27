@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_07_031107) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_27_173317) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -57,6 +57,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_07_031107) do
     t.integer "user_id"
     t.string "spotify_track_url"
     t.string "slug"
+    t.boolean "draft", default: true
     t.index ["slug"], name: "index_posts_on_slug", unique: true
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
