@@ -6,7 +6,6 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @posts = Post.where(draft: false).order(created_at: :desc)
-    # Se estiver logado, exibe os drafts do usuário
     @drafts = Post.where(draft: true).order(created_at: :desc)
   end
 
@@ -64,7 +63,12 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.friendly.find(params[:slug])
+      finded_post = Post.friendly.find(params[:slug])
+      if finded_post.draft && finded_post.user != current_user
+        redirect_to posts_path, alert: "Post not found"
+      else
+        @post = finded_post
+      end
     end
 
     def set_user
