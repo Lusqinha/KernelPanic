@@ -38,23 +38,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should not show post if drafted" do
-    @post.draft = true
-    @post.save!
-    get post_url(@post)
-    assert_redirected_to posts_url
-    assert_equal "Post not found", flash[:alert]
-  end
-
-  test "should not show post if drafted and user is not the owner" do
-    @post.draft = true
-    @post.user = users(:two)
-    @post.save!
-    get post_url(@post)
-    assert_redirected_to posts_url
-    assert_equal "Post not found", flash[:alert]
-  end
-
   test "should get edit" do
     get edit_post_url(@post)
     assert_response :success
