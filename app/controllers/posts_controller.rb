@@ -63,8 +63,8 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      finded_post = Post.friendly.find(params[:slug])
-      @post = finded_post
+      # temporarily use aceitando a pesquisa por nome do draft
+      @post = Post.friendly.find(params[:slug])
     end
 
     def set_user
