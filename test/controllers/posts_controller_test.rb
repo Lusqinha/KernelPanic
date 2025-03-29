@@ -22,11 +22,11 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create post" do
     assert_difference("Post.count") do
-      post posts_url, params: { 
-        post: { 
-          title: "Novo Post de Teste", 
-          content: "Este é o conteúdo do novo post para teste que precisa ter pelo menos 10 caracteres.",
-        } 
+      post posts_url, params: {
+        post: {
+          title: "Novo Post de Teste",
+          content: "Este é o conteúdo do novo post para teste que precisa ter pelo menos 10 caracteres."
+        }
        }
     end
 
@@ -61,11 +61,11 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update post" do
-    patch post_url(@post), params: { 
-        post: { 
-          title: "Novo Post de Teste", 
+    patch post_url(@post), params: {
+        post: {
+          title: "Novo Post de Teste",
           content: "Este é o conteúdo do novo post para teste que precisa ter pelo menos 10 caracteres."
-        } 
+        }
      }
     assert_redirected_to post_url(@post)
   end

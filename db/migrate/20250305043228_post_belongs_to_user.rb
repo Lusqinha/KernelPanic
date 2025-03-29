@@ -3,4 +3,3 @@ class PostBelongsToUser < ActiveRecord::Migration[8.0]
     add_reference :posts, :user, foreign_key: true
   end
 end
-
