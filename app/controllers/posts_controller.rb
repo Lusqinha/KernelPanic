@@ -64,11 +64,7 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       finded_post = Post.friendly.find(params[:slug])
-      if finded_post.draft && finded_post.user != current_user
-        redirect_to posts_path, alert: "Post not found"
-      else
-        @post = finded_post
-      end
+      @post = finded_post
     end
 
     def set_user
