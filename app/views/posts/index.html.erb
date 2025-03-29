@@ -5,10 +5,10 @@
     <p class="mx-auto py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div id="posts" class="max-w-fit mx-auto">
+  <div id="posts" class="max-w-fit mx-auto gap-4">
     <% if @posts.any? %>
       <% @posts.each do |post| %>
-        <div class="w-full flex mx-auto text-2xl mb-10 border-l-8 border-[#4a0bae96]">
+        <div class="w-full flex mx-auto text-2xl border-l-8 border-[#4a0bae96] post">
           <div class="ml-5 flex flex-col items-start justify-center gap-1 w-full">
             <%= link_to truncate(post.title, length: 50), post_path(post), class: "text-2xl md:text-4xl font-bold hover:font-bolder w-full" %>
             <div class="flex items-center h-5 gap-0.5"> 
@@ -26,4 +26,31 @@
       <p class="text-center my-10">Nenhum post no momento.</p>
     <% end %>
   </div>
+
+<% if authenticated? %>
+  <div class="flex items-center justify-center w-3/5 mx-auto my-10">
+    <hr class="w-2/5 mx-auto text-stone-700">
+    <h2 class="text-3xl mx-8 font-bold">Rascunhos</h2>
+    <hr class="w-2/5 mx-auto text-stone-700">
+  </div>
+  <div id="drafts" class="max-w-fit mx-auto">
+    <% if @drafts.any? %>
+      <% @drafts.each do |draft| %>
+        <div class="w-full flex mx-auto text-2xl mb-10 border-l-8 border-[#ffffff96]">
+          <div class="ml-5 flex flex-col items-start justify-center gap-1 w-full">
+            <%= link_to truncate(draft.title, length: 50), post_path(draft), class: "text-2xl md:text-4xl font-bold hover:font-bolder w-full" %>
+            <div class="flex items-center h-5 gap-0.5"> 
+              <% if draft.user.avatar.attached? %>
+                <%= image_tag draft.user.avatar, class: "rounded-full w-4 sm:w-4" %>
+              <% end %>
+              <span class="text-[#ffff]/60 text-xs"><%= draft.user.name %>,</span>
+              <span class="text-[#ffff]/60 text-xs"><%= time_ago_in_words(draft.created_at) %> atrás</span>
+            </div>
+          </div>
+        </div>
+                   
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
 </div>

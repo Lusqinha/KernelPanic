@@ -5,7 +5,8 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.where(draft: false).order(created_at: :desc)
+    @drafts = Post.where(draft: true).order(created_at: :desc)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -62,6 +63,7 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
+      # temporarily use aceitando a pesquisa por nome do draft
       @post = Post.friendly.find(params[:slug])
     end
 
@@ -71,6 +73,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :content, :spotify_track_url)
+      params.require(:post).permit(:title, :content, :spotify_track_url, :draft)
     end
 end

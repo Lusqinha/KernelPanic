@@ -1,6 +1,6 @@
-require 'net/http'
-require 'json'
-require 'open-uri'
+require "net/http"
+require "json"
+require "open-uri"
 
 class User < ApplicationRecord
   has_secure_password
@@ -20,11 +20,10 @@ class User < ApplicationRecord
     response = Net::HTTP.get(uri)
     user_data = JSON.parse(response)
 
-    if user_data['avatar_url']
-      self.avatar.attach(io: URI.open(user_data['avatar_url']), filename: "#{github_username}_avatar.jpg")
+    if user_data["avatar_url"]
+      self.avatar.attach(io: URI.open(user_data["avatar_url"]), filename: "#{github_username}_avatar.jpg")
     end
   rescue StandardError => e
     Rails.logger.error("Erro ao buscar avatar do GitHub: #{e.message}")
   end
-
 end

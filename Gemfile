@@ -7,7 +7,7 @@ gem "propshaft"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", ">= 2.1"
 gem "pg"
-gem 'aws-sdk-s3', require: false
+gem "aws-sdk-s3", require: false
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
@@ -21,7 +21,7 @@ gem "tailwindcss-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-gem 'friendly_id', '~> 5.4'
+gem "friendly_id", "~> 5.4"
 
 gem "rails-i18n", "~> 8.0.0"
 
